@@ -1,6 +1,7 @@
 import numpy as np  # importing numerical computing package
 import pandas as pd  # importing pandas data analysis tool
 from matplotlib import pyplot as plt
+from sklearn import metrics
 from sklearn.linear_model import LogisticRegression # importing MATLAB-like plotting framework
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier # importing data splitter
@@ -29,7 +30,7 @@ print(std)
 
 plt.figure(2)
 pd.plotting.parallel_coordinates(datframe,class_column='Target',color=['blue','red']); # Paralell coordinates plotting, colored by target values
-plt.show()
+#plt.show()
 
 X_train,X_test,y_train,y_test = train_test_split(X,y, test_size=0.3, random_state=2022) # Split the data set with a 30% test size
 
@@ -48,7 +49,16 @@ log_reg_test_score = log_reg.score(X_test, y_test)
 
 print(log_reg_test_score)
 
-Neu_nec = MLPClassifier(hidden_layer_sizes=(1,2), activation="logistic", max_iter=11000)
-Neu_nec.fit(X_train, y_train)
-Neu_ces_test_score = Neu_nec.score(X_test, y_test)
-print(Neu_ces_test_score)
+neu_necc = MLPClassifier(hidden_layer_sizes=(1,2), activation="logistic", max_iter=11000)
+neu_necc.fit(X_train, y_train)
+neu_nec_test_score = neu_necc.score(X_test, y_test)
+print(neu_nec_test_score)
+
+
+# If we look at the scores we see that the Logistic regression is the best model, so we continue with that. 
+# We gonna use the confussion matrix to get the errors of the model
+
+log_pred = log_reg.predict(X_test) # we need the predections of the model
+
+confuse_m = metrics.confusion_matrix(y_test, log_pred) # It show the the times when the model made a mistake
+
