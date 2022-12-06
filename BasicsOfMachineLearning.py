@@ -15,6 +15,14 @@ print('Number of attributes: ', len(datframe.columns.drop('Target')))
 print('Number of classes: ',len(datframe.groupby(by='Target').size()))
 
 
+grouped_data= datframe.groupby('Target') # Group our dataframe by the target values
+grouped_mean = grouped_data.mean() 
+std = grouped_data.std()
+
+print(grouped_data)
+print(std)
+
+
 
 
 
