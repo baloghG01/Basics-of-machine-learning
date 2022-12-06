@@ -2,7 +2,8 @@ import numpy as np  # importing numerical computing package
 import pandas as pd  # importing pandas data analysis tool
 from matplotlib import pyplot as plt
 from sklearn.linear_model import LogisticRegression # importing MATLAB-like plotting framework
-from sklearn.model_selection import train_test_split # importing data splitter
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier # importing data splitter
 from sklearn.tree import DecisionTreeClassifier 
 
  
@@ -46,3 +47,8 @@ log_reg_train_score = log_reg.score(X_train, y_train)
 log_reg_test_score = log_reg.score(X_test, y_test)
 
 print(log_reg_test_score)
+
+Neu_nec = MLPClassifier(hidden_layer_sizes=(1,2), activation="logistic", max_iter=11000)
+Neu_nec.fit(X_train, y_train)
+Neu_ces_test_score = Neu_nec.score(X_test, y_test)
+print(Neu_ces_test_score)
