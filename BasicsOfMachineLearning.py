@@ -1,5 +1,6 @@
 import numpy as np;  # importing numerical computing package
 import pandas as pd;  # importing pandas data analysis tool
+from matplotlib import pyplot as plt;  # importing MATLAB-like plotting framework
 
  
 data =  np.loadtxt(fname = 'labor_exercise_wednesday1.csv', delimiter = ',') # Load dataset with numpy, it contains 10 input and 1 binary variables and doesn't have attributes names
@@ -19,8 +20,12 @@ grouped_data= datframe.groupby('Target') # Group our dataframe by the target val
 grouped_mean = grouped_data.mean() 
 std = grouped_data.std()
 
-print(grouped_data)
+print(grouped_mean)
 print(std)
+
+plt.figure(2);
+pd.plotting.parallel_coordinates(datframe,class_column='Target',color=['blue','red']); # Paralell coordinates plotting, colored by target values
+plt.show();
 
 
 
