@@ -1,6 +1,7 @@
-import numpy as np;  # importing numerical computing package
-import pandas as pd;  # importing pandas data analysis tool
-from matplotlib import pyplot as plt;  # importing MATLAB-like plotting framework
+import numpy as np  # importing numerical computing package
+import pandas as pd  # importing pandas data analysis tool
+from matplotlib import pyplot as plt # importing MATLAB-like plotting framework
+from sklearn.model_selection import train_test_split # importing data splitter
 
  
 data =  np.loadtxt(fname = 'labor_exercise_wednesday1.csv', delimiter = ',') # Load dataset with numpy, it contains 10 input and 1 binary variables and doesn't have attributes names
@@ -23,12 +24,11 @@ std = grouped_data.std()
 print(grouped_mean)
 print(std)
 
-plt.figure(2);
+plt.figure(2)
 pd.plotting.parallel_coordinates(datframe,class_column='Target',color=['blue','red']); # Paralell coordinates plotting, colored by target values
-plt.show();
+plt.show()
 
-
-
+X_train,X_test,y_train,y_test = train_test_split(X,y, test_size=0.3, random_state=2022) # Split the data set with a 30% test size
 
 
 
