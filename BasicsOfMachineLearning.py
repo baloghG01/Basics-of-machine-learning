@@ -1,6 +1,7 @@
 import numpy as np  # importing numerical computing package
 import pandas as pd  # importing pandas data analysis tool
-from matplotlib import pyplot as plt # importing MATLAB-like plotting framework
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LogisticRegression # importing MATLAB-like plotting framework
 from sklearn.model_selection import train_test_split # importing data splitter
 from sklearn.tree import DecisionTreeClassifier 
 
@@ -37,3 +38,11 @@ class_tree_score_train= class_tree.score(X_train,y_train)
 class_tree_score_test = class_tree.score(X_test,y_test)
 
 print(class_tree_score_test)
+
+
+log_reg = LogisticRegression(solver="liblinear")  
+log_reg.fit(X_train, y_train)
+log_reg_train_score = log_reg.score(X_train, y_train)
+log_reg_test_score = log_reg.score(X_test, y_test)
+
+print(log_reg_test_score)
